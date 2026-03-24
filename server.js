@@ -4,12 +4,13 @@ const app = express();
 
 app.get("/data", async (req, res) => {
   try {
-    const r = await fetch("https://www.deutschlandfunk.de/nachrichten-100.html");
-    const t = await r.text();
-    res.send(t);
+    const response = await fetch("https://www.deutschlandfunk.de/nachrichten-100.html");
+    const text = await response.text();
+
+    res.send(text);
   } catch (e) {
     console.error(e);
-    res.status(500).send("error");
+    res.status(500).send("Fehler");
   }
 });
 
